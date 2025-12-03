@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+// Interfaces
+import { IListItems } from '../../interfaces/IListItems.interface';
 
 @Component({
   selector: 'app-input-list-item',
@@ -9,4 +12,5 @@ import { Component } from '@angular/core';
 })
 export class InputListItemComponent {
 
+  @Input({ required: true }) public inputListItems: IListItems[] = [];
 }
