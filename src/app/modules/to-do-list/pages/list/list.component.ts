@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './list.component.scss'
 })
 export class ListComponent {
+[x: string]: any;
 
   private setListItems = signal<IListItems[]>(this.parseItems());
   public getListItems = this.setListItems.asReadonly();
@@ -27,5 +28,10 @@ export class ListComponent {
 
   private parseItems() {
     return JSON.parse(localStorage.getItem('@my-list') || '[]');
+  }
+
+  public deleteAllItems() {
+    localStorage.removeItem('@my-list');
+    return this.setListItems.set(this.parseItems());
   }
 }
