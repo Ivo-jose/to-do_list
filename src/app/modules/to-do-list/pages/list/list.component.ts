@@ -16,7 +16,6 @@ import { IListItems } from '../../interfaces/IListItems.interface';
   styleUrl: './list.component.scss'
 })
 export class ListComponent {
-[x: string]: any;
 
   private setListItems = signal<IListItems[]>(this.parseItems());
   public getListItems = this.setListItems.asReadonly();
@@ -40,7 +39,21 @@ export class ListComponent {
     return this.getListItems().filter((item : IListItems) => {
       if (stage === 'pending') return !item.checked;
       if (stage === 'completed') return item.checked;
-      return item;
+      return item
     });
+  }
+
+  public updateItemCheckbox(event: { id: string, checked: boolean }) {
+    this.setListItems.update((oldValue: IListItems[]) => {
+        oldValue.filter(res => {
+          if (res.id === event.id) {
+            res.checked = event.checked;
+            return res;
+          }
+          return res;
+        });
+        return oldValue;
+    });
+    return localStorage.setItem('@my-list', JSON.stringify(this.setListItems()));
   }
 }

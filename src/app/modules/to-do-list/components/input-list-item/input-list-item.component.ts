@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // Interfaces
 import { IListItems } from '../../interfaces/IListItems.interface';
+
+
 
 @Component({
   selector: 'app-input-list-item',
@@ -13,4 +15,9 @@ import { IListItems } from '../../interfaces/IListItems.interface';
 export class InputListItemComponent {
 
   @Input({ required: true }) public inputListItems: IListItems[] = [];
+  @Output() public outputUpdateItemCheckbox = new EventEmitter<{ id: string, checked: boolean}>();
+
+  public updateItemCheckbox(id: string, checked: boolean) {
+    return this.outputUpdateItemCheckbox.emit({id, checked});
+  }
 }
