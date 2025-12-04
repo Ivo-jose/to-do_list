@@ -16,8 +16,12 @@ export class InputListItemComponent {
 
   @Input({ required: true }) public inputListItems: IListItems[] = [];
   @Output() public outputUpdateItemCheckbox = new EventEmitter<{ id: string, checked: boolean}>();
+  @Output() public outputUpdateItemValue = new EventEmitter<{ id: string, value: string}>();
 
   public updateItemCheckbox(id: string, checked: boolean) {
     return this.outputUpdateItemCheckbox.emit({id, checked});
+  }
+  public updateItemValue(id: string, value: string) {
+    return this.outputUpdateItemValue.emit({id, value});
   }
 }

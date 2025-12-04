@@ -8,6 +8,8 @@
      [value]="item.value"
      placeholder="Adicione um valor"
      autofocus
+     (input)="updateItemValue(item.id, inputValue.value)"
+     (keydown.enter)="inputValue.blur()"
     >
     <button class="btn btn-danger-circle" title="Deletar este item"></button>
   </label>

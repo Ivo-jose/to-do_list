@@ -24,6 +24,7 @@
       <app-input-list-item
         [inputListItems]="listItemsStage('pending')"
         (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
+        (outputUpdateItemValue)="updateItemValue($event)"
       />
     }
     @if (listItemsStage('completed').length) {
@@ -31,6 +32,7 @@
       <app-input-list-item
         [inputListItems]="listItemsStage('completed')"
         (outputUpdateItemCheckbox)="updateItemCheckbox($event)"
+        (outputUpdateItemValue)="updateItemValue($event)"
       />
     }
   </main>
