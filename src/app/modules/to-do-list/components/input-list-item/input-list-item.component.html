@@ -11,6 +11,6 @@
      (input)="updateItemValue(item.id, inputValue.value)"
      (keydown.enter)="inputValue.blur()"
     >
-    <button class="btn btn-danger-circle" title="Deletar este item"></button>
+    <button class="btn btn-danger-circle" title="Deletar este item" (click)="deleteItem(item.id)"></button>
   </label>
 }
